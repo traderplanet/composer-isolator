@@ -174,9 +174,10 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
      */
     public function mutateNamespaces()
     {
-        // Build the list of required packages
+        $requiredpkg = [];
+
+        // Get a list of just the required packages so that we can exclude the dev-packages.
         if (!$this->pkgdev) {
-            $requiredpkg = [];
             $this->getRequired($this->composer->getPackage(), $requiredpkg);
         }
 
@@ -184,21 +185,24 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
 
         // Grab the list of packages
         $repo = $this->composer->getRepositoryManager()->getLocalRepository();
-        $packages = $repo->getCanonicalPackages();
 
-        // Grab the list of namespaces
+        // Collect the packages to be isolated and their namespaces.
+        $packages = [];
         $namespaces = [];
-        foreach ($packages as $package) {
+        foreach ($repo->getCanonicalPackages() as $package) {
             $name = $package->getName();
+
+            // Skip all development packages unless enabled via flag.
             if (!$this->pkgdev && !isset($requiredpkg[$name])) {
                 continue;
             }
 
+            // Skip excluded packages such self and any custom passed via config.
             if (in_array($name, $this->excludelist)) {
-                // Ignore excluded packages
                 continue;
             }
 
+            $packages[] = $package;
             $namespaces = array_merge($namespaces, $this->discover($package));
         }
 
@@ -222,11 +226,6 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
 
         // Do the work
         foreach ($packages as $package) {
-            // Skip self
-            if (self::PACKAGENAME == $package->getName()) {
-                continue;
-            }
-
             // Prefix the namespaces in the installed.json (used to dump autoloaders)
             $repo->removePackage($package);
             $this->mutatePackage($package);
