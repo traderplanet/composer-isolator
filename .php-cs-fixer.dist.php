@@ -17,5 +17,4 @@ return $config->setUsingCache(false)
     ->setFinder(PhpCsFixer\Finder::create()
         ->in(['.'])
         ->exclude('vendor')
-        ->exclude('tests')
     );
