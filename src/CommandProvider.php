@@ -1,6 +1,6 @@
 <?php
 
-namespace Ox6d617474\Isolate;
+namespace XWP\ComposerIsolator;
 
 use Composer\Plugin\Capability\CommandProvider as CommandProviderCapability;
 

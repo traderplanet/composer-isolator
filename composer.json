@@ -1,8 +1,14 @@
 {
-  "name": "xwp/isolate-composer",
-  "description": "Isolates composer dependencies by prefixing namespace for all vendor code within a project",
+  "name": "xwp/composer-isolator",
+  "description": "Composer plugin to isolate project dependencies by prefixing their namespace",
+  "homepage": "https://github.com/xwp/composer-isolator",
+  "support": {
+    "issues": "https://github.com/xwp/composer-isolator/issues",
+    "source": "https://github.com/xwp/composer-isolator",
+    "docs": "https://github.com/xwp/composer-isolator#readme"
+  },
   "license": "MIT",
-  "minimum-stability": "alpha",
+  "minimum-stability": "dev",
   "type": "composer-plugin",
   "require": {
     "composer-plugin-api": "^1.1",
@@ -16,12 +22,12 @@
   },
   "autoload":{
     "psr-4":{
-      "Ox6d617474\\Isolate\\": "src/"
+      "XWP\\ComposerIsolator\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4":{
-      "Ox6d617474\\IsolateTest\\": "tests/phpunit/"
+      "XWP\\ComposerIsolatorTest\\": "tests/phpunit/"
     }
   },
   "config": {
@@ -31,7 +37,7 @@
     }
   },
   "extra": {
-    "class": "Ox6d617474\\Isolate\\Plugin"
+    "class": "XWP\\ComposerIsolator\\Plugin"
   },
   "scripts": {
     "lint-php": "php-cs-fixer fix --dry-run --verbose",

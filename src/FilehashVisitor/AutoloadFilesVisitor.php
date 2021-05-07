@@ -1,6 +1,6 @@
 <?php
 
-namespace Ox6d617474\Isolate\FilehashVisitor;
+namespace XWP\ComposerIsolator\FilehashVisitor;
 
 use PhpParser\Node;
 

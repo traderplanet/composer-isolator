@@ -1,6 +1,6 @@
 <?php
 
-namespace Ox6d617474\Isolate;
+namespace XWP\ComposerIsolator;
 
 use Composer\Composer;
 use Composer\EventDispatcher\EventSubscriberInterface;
@@ -8,19 +8,19 @@ use Composer\IO\IOInterface;
 use Composer\Package\PackageInterface;
 use Composer\Plugin\Capable;
 use Composer\Plugin\PluginInterface;
-use Ox6d617474\Isolate\FilehashVisitor\AbstractVisitor;
-use Ox6d617474\Isolate\FilehashVisitor\AutoloadFilesVisitor;
-use Ox6d617474\Isolate\FilehashVisitor\AutoloadStaticVisitor;
 use PhpParser\NodeTraverser;
 use PhpParser\ParserFactory;
 use PhpParser\PrettyPrinter\Standard;
+use XWP\ComposerIsolator\FilehashVisitor\AbstractVisitor;
+use XWP\ComposerIsolator\FilehashVisitor\AutoloadFilesVisitor;
+use XWP\ComposerIsolator\FilehashVisitor\AutoloadStaticVisitor;
 
 final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
 {
     /**
      * The name of this package
      */
-    const PACKAGENAME = 'xwp/isolate-composer';
+    const PACKAGENAME = 'xwp/composer-isolator';
 
     /**
      * Reference to the running Composer instance
@@ -95,7 +95,7 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
         // Collect packages that don't need to be rewritten.
         // They will still be rewritten if they contain namespaces found in other packages
         $excludelist = [
-            self::PACKAGENAME,
+            self::PACKAGENAME, // TODO: Get this via Composer API?
         ];
 
         if (!empty($config['excludelist'])) {
@@ -165,7 +165,7 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
     public function getCapabilities()
     {
         return [
-            'Composer\\Plugin\\Capability\\CommandProvider' => 'Ox6d617474\\Isolate\\CommandProvider',
+            'Composer\\Plugin\\Capability\\CommandProvider' => 'XWP\\ComposerIsolator\\CommandProvider',
         ];
     }
 

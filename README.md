@@ -1,6 +1,10 @@
-# Composer Plugin for Isolating Dependencies
+# Composer Isolator
 
 [![Lint and Test](https://github.com/xwp/composer-isolation/actions/workflows/ci.yml/badge.svg)](https://github.com/xwp/composer-isolation/actions/workflows/ci.yml)
+
+**Composer plugin to isolate project dependencies by prefixing their namespace.**
+
+---
 
 **What this plugin does**  
 

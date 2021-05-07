@@ -1,9 +1,9 @@
 <?php
 
-namespace Ox6d617474\IsolateTest;
+namespace XWP\ComposerIsolatorTest;
 
-use Ox6d617474\Isolate\NamespaceChecker;
 use PHPUnit\Framework\TestCase;
+use XWP\ComposerIsolator\NamespaceChecker;
 
 class TestNamespaceChecker extends TestCase
 {

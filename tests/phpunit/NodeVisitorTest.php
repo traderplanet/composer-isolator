@@ -1,13 +1,13 @@
 <?php
 
-namespace Ox6d617474\IsolateTest;
+namespace XWP\ComposerIsolatorTest;
 
-use Ox6d617474\Isolate\NamespaceChecker;
-use Ox6d617474\Isolate\NodeVisitor;
 use PhpParser\NodeTraverser;
 use PhpParser\ParserFactory;
 use PhpParser\PrettyPrinter\Standard;
 use PHPUnit\Framework\TestCase;
+use XWP\ComposerIsolator\NamespaceChecker;
+use XWP\ComposerIsolator\NodeVisitor;
 
 class NodeVisitorTest extends TestCase
 {

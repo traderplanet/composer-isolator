@@ -1,6 +1,6 @@
 <?php
 
-namespace Ox6d617474\Isolate;
+namespace XWP\ComposerIsolator;
 
 use PhpParser\Node;
 use PhpParser\Node\Scalar\String_;
