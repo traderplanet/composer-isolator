@@ -2,7 +2,7 @@
 
 <phpunit
     colors="true"
-    verbose="false"
+    verbose="true"
     >
     <testsuites>
         <testsuite name="all">
