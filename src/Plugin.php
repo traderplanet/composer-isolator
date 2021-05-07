@@ -74,9 +74,6 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
     /**
      * Initialization
      *
-     * @param Composer    $composer
-     * @param IOInterface $io
-     *
      * @throws \Exception
      */
     public function activate(Composer $composer, IOInterface $io)
@@ -148,7 +145,7 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
         $events = [
             '__isolate-dependencies' => [
                 ['mutateNamespaces'],
-                ['mutateStaticFiles']
+                ['mutateStaticFiles'],
             ],
         ];
 
@@ -226,7 +223,7 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
         // Do the work
         foreach ($packages as $package) {
             // Skip self
-            if ($package->getName() == self::PACKAGENAME) {
+            if (self::PACKAGENAME == $package->getName()) {
                 continue;
             }
 
@@ -287,8 +284,6 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
     /**
      * Discover all the namespaces in a package
      *
-     * @param PackageInterface $package
-     *
      * @return array
      */
     private function discover(PackageInterface $package)
@@ -308,7 +303,7 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
         foreach ($it as $file) {
             $ext = pathinfo($file, PATHINFO_EXTENSION);
             $file = (string) $file;
-            if ($ext == 'php') {
+            if ('php' == $ext) {
                 $namespaces = array_merge($namespaces, $this->discoverFile($file));
             } elseif (empty($ext)) {
                 // Also grab files with no extension that contain <?php
@@ -351,8 +346,6 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
 
     /**
      * Mutate autoloaded namespaces for a package
-     *
-     * @param PackageInterface $package
      */
     private function mutatePackage(PackageInterface $package)
     {
@@ -387,8 +380,6 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
 
     /**
      * Rewrite code for a package
-     *
-     * @param PackageInterface $package
      */
     private function rewritePackage(PackageInterface $package)
     {
@@ -409,7 +400,7 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
         foreach ($it as $file) {
             $ext = pathinfo($file, PATHINFO_EXTENSION);
             $file = (string) $file;
-            if ($ext == 'php') {
+            if ('php' == $ext) {
                 $this->transformFile($file);
             } elseif (empty($ext)) {
                 // Also grab files with no extension that contain <?php
@@ -464,7 +455,6 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
      * If there are any PSR-0 namespaced files, the directory structure
      * needs to be updated as dictated by the new namespace
      *
-     * @param array  $autoload
      * @param string $directory
      */
     private function handlePSR0(array $autoload, $directory)
@@ -525,9 +515,6 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
 
     /**
      * Get the list of required dependencies
-     *
-     * @param PackageInterface $package
-     * @param array            $list
      */
     private function getRequired(PackageInterface $package, array &$list)
     {
@@ -535,7 +522,7 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
         foreach ($required as $pkg) {
             if (!isset($list[$pkg])) {
                 $pkgobj = $this->composer->getRepositoryManager()->getLocalRepository()->findPackage($pkg, '*');
-                if ($pkgobj != null) {
+                if (null != $pkgobj) {
                     $list[$pkg] = true;
                     $this->getRequired($pkgobj, $list);
                 }

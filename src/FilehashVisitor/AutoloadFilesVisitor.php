@@ -6,7 +6,6 @@ use PhpParser\Node;
 
 class AutoloadFilesVisitor extends AbstractVisitor
 {
-
     private $entered = false;
 
     /**

@@ -2,8 +2,8 @@
 
 namespace Ox6d617474\Isolate\FilehashVisitor;
 
-use PhpParser\NodeVisitorAbstract;
 use PhpParser\Node;
+use PhpParser\NodeVisitorAbstract;
 use PhpParser\ParserFactory;
 use PhpParser\PrettyPrinter\Standard;
 

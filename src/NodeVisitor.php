@@ -47,8 +47,7 @@ final class NodeVisitor extends NodeVisitorAbstract
     /**
      * Class constructor
      *
-     * @param string           $prefix
-     * @param NamespaceChecker $checker
+     * @param string $prefix
      */
     public function __construct($prefix, NamespaceChecker $checker)
     {
@@ -81,7 +80,7 @@ final class NodeVisitor extends NodeVisitorAbstract
                 if (count($use->name->parts) > 1) { // Single part means global, so ignore
                     // Split off the classname and transform the namespace
                     $ns = $use->name->parts;
-                    $i =  count($ns) - 1;
+                    $i = count($ns) - 1;
                     $ns = array_slice($ns, 0, $i);
                     $ns = $this->transformNamespace($ns);
 
@@ -109,7 +108,7 @@ final class NodeVisitor extends NodeVisitorAbstract
                 $this->transformed = true;
             }
         } elseif ($node instanceof Node\Name) {
-            if ($node->isFullyQualified() || $this->namespace == '__global__') {
+            if ($node->isFullyQualified() || '__global__' == $this->namespace) {
                 if (count($node->parts) > 1) { // Single part means global, so ignores
                     // If the first part is aliased, then we don't need to transform
                     // The alias should already be transformed properly
@@ -139,8 +138,6 @@ final class NodeVisitor extends NodeVisitorAbstract
 
     /**
      * Perform a transformation on a namespace if we should
-     *
-     * @param array $parts
      *
      * @return array
      */

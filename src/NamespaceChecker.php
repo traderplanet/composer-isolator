@@ -21,7 +21,6 @@ final class NamespaceChecker
     /**
      * Class constructor
      *
-     * @param array  $namespaces
      * @param string $prefix
      */
     public function __construct(array $namespaces, $prefix)

@@ -6,7 +6,6 @@ use PhpParser\Node;
 
 class AutoloadStaticVisitor extends AbstractVisitor
 {
-
     private $entered = false;
 
     /**
@@ -14,7 +13,7 @@ class AutoloadStaticVisitor extends AbstractVisitor
      */
     public function enterNode(Node $node)
     {
-        if ($node instanceof Node\Stmt\PropertyProperty and $node->name == 'files') {
+        if ($node instanceof Node\Stmt\PropertyProperty and 'files' == $node->name) {
             $this->transformFilehashArray($node->default);
         }
     }
