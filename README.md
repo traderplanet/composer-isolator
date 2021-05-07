@@ -32,6 +32,10 @@ composer dependencies. Each project utilizing the plugin can't conflict
 with any other project unless the vendor code is not namespaced (in which 
 case there aren't many options...).
 
+## Known Limitations
+
+- It doesn't replace function definitions and calls in the global namespace. Any definitions and calls to global functions will remain in the global namespace after the transformation.
+
 ## Usage  
 
 Using the plugin is straightforward. Install the plugin by requiring it 
