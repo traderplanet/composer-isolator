@@ -1,4 +1,6 @@
-# Composer Dependency Isolation  
+# Composer Plugin for Isolating Dependencies
+
+[![Lint and Test](https://github.com/xwp/composer-isolation/actions/workflows/ci.yml/badge.svg)](https://github.com/xwp/composer-isolation/actions/workflows/ci.yml)
 
 **What this plugin does**  
 
