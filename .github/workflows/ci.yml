@@ -1,0 +1,30 @@
+name: Lint and Test
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v2
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-${{ hashFiles('**/composer.json') }}
+
+      - uses: php-actions/composer@v5
+        with:
+          php_version: 7.4
+          version: 1
+
+      - name: Lint Composer meta
+        run: composer lint-composer
+
+      - name: Lint PHP
+        run: composer lint-php
+      
+      - name: Test
+        run: composer test

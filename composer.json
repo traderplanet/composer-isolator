@@ -34,8 +34,9 @@
     "class": "Ox6d617474\\Isolate\\Plugin"
   },
   "scripts": {
-    "lint": "php-cs-fixer list-files",
-    "lint-fix": "php-cs-fixer fix",
+    "lint-php": "php-cs-fixer fix --dry-run --verbose",
+    "lint-php-fix": "php-cs-fixer fix",
+    "lint-composer": "@composer validate",
     "test": "phpunit"
   }
 }
