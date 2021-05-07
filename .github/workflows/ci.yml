@@ -12,7 +12,9 @@ jobs:
       - uses: php-actions/composer@v5
 
       - uses: php-actions/composer@v5
-        with: lint
+        with:
+          command: lint
 
       - uses: php-actions/composer@v5
-        with: test
+        with:
+          command: test
