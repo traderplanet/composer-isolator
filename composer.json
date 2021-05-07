@@ -8,7 +8,7 @@
     "docs": "https://github.com/xwp/composer-isolator#readme"
   },
   "license": "MIT",
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "type": "composer-plugin",
   "require": {
     "composer-plugin-api": "^1.1",
