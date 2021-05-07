@@ -18,6 +18,7 @@
     }
   },
   "config": {
+    "sort-packages": true,
     "platform": {
       "php": "5.6.20"
     }
