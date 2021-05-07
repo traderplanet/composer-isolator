@@ -17,6 +17,7 @@ jobs:
 
       - uses: php-actions/composer@v5
         with:
+          php_version: 7.4
           version: 1
 
       - name: Lint Composer meta
