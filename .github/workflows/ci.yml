@@ -19,8 +19,11 @@ jobs:
         with:
           version: 1
 
-      - name: Lint
-        run: composer lint
+      - name: Lint Composer meta
+        run: composer lint-composer
+
+      - name: Lint PHP
+        run: composer lint-php
       
       - name: Test
         run: composer test
