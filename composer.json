@@ -11,11 +11,11 @@
   "minimum-stability": "stable",
   "type": "composer-plugin",
   "require": {
+    "php": "^5.6|^7.0",
     "composer-plugin-api": "^1.1",
     "nikic/php-parser": "^3.1"
   },
   "require-dev": {
-    "php": "^5.6|^7.0",
     "composer/composer": "^1.0",
     "friendsofphp/php-cs-fixer": "^2.19",
     "phpunit/phpunit": "^5.7|^7.5"
