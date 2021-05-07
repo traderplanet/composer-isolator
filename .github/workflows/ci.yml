@@ -10,11 +10,11 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: php-actions/composer@v5
-
-      - uses: php-actions/composer@v5
         with:
-          command: lint
+          version: 1
 
-      - uses: php-actions/composer@v5
-        with:
-          command: test
+      - name: Lint
+        run: composer lint
+      
+      - name: Test
+        run: composer test
