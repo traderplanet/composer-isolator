@@ -6,7 +6,7 @@
 
 ---
 
-**What this plugin does**  
+## How it Works
 
 This plugin prefixes all vendor namespaces with a chosen value. This 
 includes all declared namespaces, use statements, fully qualified 
@@ -15,14 +15,14 @@ references, and most string values that reference the namespace.
 All vendor code and composer autoload mappings are updated to reference 
 the prefixed namespace.  
 
-**What this plugin does not do**  
+### What it does _not_ do
 
 It will not touch any code in your project. It only affects code in the 
 vendor directory, and it only affects code referencing the affected 
 namespaces. You must update all references in your code yourself if you 
 apply this to an existing project.  
 
-**Why would I want to use this?**  
+### Why use it
 
 This plugin allows you to run two projects that utilize composer 
 dependencies in the same runtime, without worrying about conflicting 
