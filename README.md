@@ -116,3 +116,7 @@ The syntax is:
         }
 }
 ```
+
+## Credits
+
+Created and maintaned by [XWP](https://xwp.co) as a fork of [and/composer-isolation](https://github.com/logical-and/composer-isolation).
