@@ -36,7 +36,7 @@ Configure the plugin by adding the following to your `composer.json`:
 "config" : {
     "isolate": {
       "prefix": "Your\\Prefix\\Here\\",
-      "blacklist": [],
+      "excludelist": [],
       "autorun": false,
       "require-dev": false,
       "replacements" : {}
@@ -66,11 +66,11 @@ should be a valid namespace, and should be unique to your project. I
 recommend you don't use your main project namespace, or at least add 
 `\\Vendor` to the end.  
 
-**blacklist**  
+**exludelist**  
 
 This is a list of packages you don't want to prefix. Matching packages 
 will not be scanned for namespaces, but will still have code rewritten 
-if it contains namespaces from other non-blacklisted packages.  
+if it contains namespaces from other non-excluded packages.  
 
 **autorun**  
 

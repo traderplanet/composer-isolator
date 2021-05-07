@@ -20,7 +20,7 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
     /**
      * The name of this package
      */
-    const PACKAGENAME = 'and/isolate-composer';
+    const PACKAGENAME = 'xwp/isolate-composer';
 
     /**
      * Reference to the running Composer instance
@@ -44,11 +44,11 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
     private $checker;
 
     /**
-     * Package blacklist
+     * Package exclude list
      *
      * @var array
      */
-    private $blacklist;
+    private $excludelist;
 
     /**
      * Prefix require-dev packages?
@@ -95,25 +95,17 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
 
         $this->prefix = trim($config['prefix'], '\\');
 
-        // Get the list of blacklisted packages
-        // These packages will not be searched for namespaces
+        // Collect packages that don't need to be rewritten.
         // They will still be rewritten if they contain namespaces found in other packages
-        $blacklist = [
-            self::PACKAGENAME,  // This package
-            'nikic/php-parser', // The parser library
-
-            // Composer
-            'composer/composer',
-            'composer/ca-bundle',
-            'composer/semver',
-            'composer/spdx-licenses',
+        $excludelist = [
+            self::PACKAGENAME,
         ];
 
-        if (!empty($config['blacklist'])) {
-            $blacklist = array_merge($blacklist, $config['blacklist']);
+        if (!empty($config['excludelist'])) {
+            $excludelist = array_merge($excludelist, $config['excludelist']);
         }
 
-        $this->blacklist = $blacklist;
+        $this->excludelist = $excludelist;
 
         // These are string replacements that will be run after code rewrites
         // They are executed EVERY time, so make sure they are idempotent
@@ -205,8 +197,8 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
                 continue;
             }
 
-            if (in_array($name, $this->blacklist)) {
-                // Ignore blacklisted packages
+            if (in_array($name, $this->excludelist)) {
+                // Ignore excluded packages
                 continue;
             }
 
