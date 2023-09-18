@@ -1,12 +1,6 @@
 {
-  "name": "xwp/composer-isolator",
-  "description": "Composer plugin to isolate project dependencies by prefixing their namespace",
-  "homepage": "https://github.com/xwp/composer-isolator",
-  "support": {
-    "issues": "https://github.com/xwp/composer-isolator/issues",
-    "source": "https://github.com/xwp/composer-isolator",
-    "docs": "https://github.com/xwp/composer-isolator#readme"
-  },
+  "name": "terreporter/composer-isolator",
+  "description": "Composer plugin to isolate project dependencies by prefixing their namespace",    
   "license": "MIT",
   "minimum-stability": "stable",
   "type": "composer-plugin",
