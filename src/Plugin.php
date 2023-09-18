@@ -20,7 +20,7 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
     /**
      * The name of this package
      */
-    const PACKAGENAME = 'xwp/composer-isolator';
+    const PACKAGENAME = 'terreporter/composer-isolator';
 
     /**
      * Reference to the running Composer instance
@@ -527,5 +527,13 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
                 }
             }
         }
+    }
+
+     public function deactivate(Composer $composer, IOInterface $io)
+    {
+    }
+
+    public function uninstall(Composer $composer, IOInterface $io)
+    {
     }
 }
