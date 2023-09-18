@@ -230,7 +230,7 @@ final class Plugin implements PluginInterface, EventSubscriberInterface, Capable
             $repo->removePackage($package);
             $this->mutatePackage($package);
             $repo->addPackage($package);
-            $repo->write();
+            $repo->write(false, $this->composer->getInstallationManager());
 
             // Rewrite the files in vendor to use the prefixed namespaces
             $this->rewritePackage($package);
