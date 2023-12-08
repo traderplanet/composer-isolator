@@ -23,5 +23,6 @@ final class Command extends BaseCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->getComposer()->getEventDispatcher()->dispatch('__isolate-dependencies');
+        return 1;
     }
 }
